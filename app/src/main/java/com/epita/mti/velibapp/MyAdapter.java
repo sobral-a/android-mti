@@ -46,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        holder.mTextView.setText(mDataset.get(position).getFields().getName());
+        holder.mTextView.setText(mDataset.get(position).getFields().getAddress().trim());
     }
 
     @Override

@@ -67,25 +67,19 @@ public class ListFragment extends Fragment
                 {
                     JSONdata jsonData = response.body();
                     List<VelibStation> velibStations = jsonData.getRecords();
-                    for (int i = 0; i < velibStations.size(); i++){
-                        Log.d("test", velibStations.get(i).toString());
-
-                    }
                     mAdapter.setData(velibStations);
                     mAdapter.notifyDataSetChanged();
                 }
                 else
                 {
-                    Log.d("Failure not successful",response.toString());
-
+                    Log.d("Failure not successful",response.errorBody().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<JSONdata> call, Throwable t)
             {
-                Log.d("Failure test",call.request().toString());
-
+                Log.d("Failure Onfailure",t.getCause().toString());
             }
         });
     }

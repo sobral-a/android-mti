@@ -12,13 +12,13 @@ public class StationFields
     private final String bonus;
     private final int bike_stands;
     private final int number;
-    private final int last_update;
+    private final String last_update;
     private final int available_bike_stands;
     private final String banking;
     private final int available_bikes;
     private final String address;
 
-    public StationFields(String status, String contract_name, String name, String bonus, int bike_stands, int number, int last_update, int available_bike_stands, String banking, int available_bikes, String address)
+    public StationFields(String status, String contract_name, String name, String bonus, int bike_stands, int number, String last_update, int available_bike_stands, String banking, int available_bikes, String address)
     {
         this.status = status;
         this.contract_name = contract_name;
@@ -63,7 +63,7 @@ public class StationFields
         return number;
     }
 
-    public int getLast_update()
+    public String getLast_update()
     {
         return last_update;
     }
