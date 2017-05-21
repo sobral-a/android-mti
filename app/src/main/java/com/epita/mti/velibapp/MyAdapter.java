@@ -1,11 +1,14 @@
 package com.epita.mti.velibapp;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.epita.mti.velibapp.data.StationFields;
 import com.epita.mti.velibapp.data.VelibStation;
 
 import java.util.ArrayList;
@@ -23,10 +26,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     static class ViewHolder extends RecyclerView.ViewHolder
     {
         private TextView mTextView;
+        private ImageView statusIcon;
         public ViewHolder(View v)
         {
             super(v);
             mTextView = (TextView) v.findViewById(R.id.list_text);
+            statusIcon = (ImageView) v.findViewById(R.id.status_img);
         }
     }
 
@@ -46,7 +51,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        holder.mTextView.setText(mDataset.get(position).getFields().getName().trim());
+        StationFields fields = mDataset.get(position).getFields();
+        holder.mTextView.setText(fields.getName().split("-")[1].trim());
+        if (fields.getStatus().equals("CLOSED"))
+        {
+            holder.statusIcon.setImageResource(R.drawable.closed);
+        }
     }
 
     @Override
