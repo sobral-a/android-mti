@@ -72,7 +72,7 @@ public class ListFragment extends Fragment
                 }
                 else
                 {
-                    Log.d("Failure not successful",response.errorBody().toString());
+                    Log.d("Failure not successfull",response.errorBody().toString());
                 }
             }
 
