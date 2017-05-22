@@ -1,6 +1,6 @@
 package com.epita.mti.velibapp;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -41,14 +40,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.members_list:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
-                Toast.makeText(MainActivity.this, "Vous allez voir les membres",
-                        Toast.LENGTH_SHORT).show();
+                displayMembers();
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void displayMembers()
+    {
+        Intent displayMembers = new Intent(MainActivity.this, MembersListActivity.class);
+        startActivity(displayMembers);
     }
 }

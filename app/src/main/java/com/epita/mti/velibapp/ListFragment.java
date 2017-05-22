@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.epita.mti.velibapp.data.JSONdata;
 import com.epita.mti.velibapp.data.VelibService;
@@ -72,14 +73,16 @@ public class ListFragment extends Fragment
                 }
                 else
                 {
-                    Log.d("Failure not successfull",response.errorBody().toString());
+                    Toast.makeText(getActivity(), "Impossible de récupérer les données",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<JSONdata> call, Throwable t)
             {
-                Log.d("Failure Onfailure",t.getCause().toString());
+                Toast.makeText(getActivity(), "Impossible de récupérer les données",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
