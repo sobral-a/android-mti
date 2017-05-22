@@ -12,7 +12,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="15dp"
         android:paddingRight="10dp"
-        app:srcCompat="@drawable/check"
+        android:src="@drawable/open"
         />
 
     <TextView

@@ -55,7 +55,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         holder.mTextView.setText(fields.getName().split("-")[1].trim());
         if (fields.getStatus().equals("CLOSED"))
         {
-            holder.statusIcon.setImageResource(R.drawable.closed);
+            holder.statusIcon.setImageResource(R.drawable.close);
         }
     }
 
