@@ -22,6 +22,7 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
     private List<VelibStation> mDataset = new ArrayList<>();
+    private List<VelibStation> sourceList = new ArrayList<>();
 
     static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -39,6 +40,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public void setData(List<VelibStation> myDataSet)
     {
         this.mDataset = myDataSet;
+    }
+    public List<VelibStation> getData()
+    {
+        return this.mDataset;
+    }
+
+    public void setSourceList(List<VelibStation> sourceList)
+    {
+        this.sourceList = sourceList;
     }
 
     @Override
@@ -63,5 +73,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public int getItemCount()
     {
         return mDataset.size();
+    }
+
+    public void filter(String newText)
+    {
+        ArrayList<VelibStation> newList = new ArrayList<>();
+        if (newText != null && !newText.isEmpty())
+        {
+            for (VelibStation v : mDataset)
+            {
+                if (v.getFields().getName().trim().toLowerCase().contains(newText.toLowerCase().trim()))
+                    newList.add(v);
+            }
+        }
+        else
+            newList = (ArrayList)sourceList;
+
+        this.mDataset = newList;
+        this.notifyDataSetChanged();
     }
 }

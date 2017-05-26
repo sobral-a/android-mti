@@ -1,5 +1,8 @@
 package com.epita.mti.velibapp;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,7 +26,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static java.lang.System.in;
 
 /**
  * Created by alexa on 19/05/2017.
@@ -54,36 +56,81 @@ public class ListFragment extends Fragment
         mAdapter = new MyAdapter();
         mRecyclerView.setAdapter(mAdapter);
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(VelibService.ENDPOINT)
-                .addConverterFactory(GsonConverterFactory.create()).build();
-        VelibService velibService = retrofit.create(VelibService.class);
+        retrieveData();
+    }
 
-        final Call<JSONdata> objectList = velibService.listVelibObjects("stations-velib-disponibilites-en-temps-reel", 100);
-        objectList.enqueue(new Callback<JSONdata>()
+    public boolean checkConnectivity()
+    {
+        ConnectivityManager manager =
+                (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnectedOrConnecting();
+    }
+
+    private void retrieveData()
+    {
+        if (checkConnectivity())
         {
-            @Override
-            public void onResponse(Call<JSONdata> call, Response<JSONdata> response)
-            {
-                if (response.isSuccessful())
-                {
-                    JSONdata jsonData = response.body();
-                    List<VelibStation> velibStations = jsonData.getRecords();
-                    mAdapter.setData(velibStations);
-                    mAdapter.notifyDataSetChanged();
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "Impossible de récupérer les données",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(VelibService.ENDPOINT)
+                    .addConverterFactory(GsonConverterFactory.create()).build();
+            VelibService velibService = retrofit.create(VelibService.class);
 
-            @Override
-            public void onFailure(Call<JSONdata> call, Throwable t)
+            final Call<JSONdata> objectList = velibService.listVelibObjects("stations-velib-disponibilites-en-temps-reel", 100);
+            objectList.enqueue(new Callback<JSONdata>()
             {
-                Toast.makeText(getActivity(), "Impossible de récupérer les données",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onResponse(Call<JSONdata> call, Response<JSONdata> response)
+                {
+                    if (response.isSuccessful())
+                    {
+                        JSONdata jsonData = response.body();
+                        List<VelibStation> velibStations = jsonData.getRecords();
+                        mAdapter.setSourceList(velibStations);
+                        mAdapter.setData(velibStations);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JSONdata> call, Throwable t)
+                {
+                }
+            });
+        }
+        else
+        {
+            Toast.makeText(getActivity(), "Impossible de récupérer les données",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public RecyclerView getmRecyclerView()
+    {
+        return mRecyclerView;
+    }
+
+    public void setmRecyclerView(RecyclerView mRecyclerView)
+    {
+        this.mRecyclerView = mRecyclerView;
+    }
+
+    public RecyclerView.LayoutManager getmLayoutManager()
+    {
+        return mLayoutManager;
+    }
+
+    public void setmLayoutManager(RecyclerView.LayoutManager mLayoutManager)
+    {
+        this.mLayoutManager = mLayoutManager;
+    }
+
+    public MyAdapter getmAdapter()
+    {
+        return mAdapter;
+    }
+
+    public void setmAdapter(MyAdapter mAdapter)
+    {
+        this.mAdapter = mAdapter;
     }
 }
