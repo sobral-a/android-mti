@@ -3,9 +3,11 @@ package com.epita.mti.velibapp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.media.MediaMetadataCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epita.mti.velibapp.data.VelibStation;
@@ -16,20 +18,25 @@ import com.epita.mti.velibapp.data.VelibStation;
 
 public class PlaceholderFragment extends Fragment
 {
-    private String name;
-    private String status;
-    private int bikeStands;
-    private int available_bike_stands;
-    private String adress;
-    private String updateDate;
+    private static final String ARG_NAME = "name";
+    private static final String ARG_STATUS = "status";
+    private static final String ARG_BIKESTANDS = "bikeStands";
+    private static final String ARG_AVAILABLEBIKESTANDS = "availableBikeStands";
+    private static final String ARG_ADRESS = "adress";
+    private static final String ARG_UPDATEDATE = "updateDate";
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
-    public static PlaceholderFragment newInstance(int sectionNumber, VelibStation velibStation)
+    public static PlaceholderFragment newInstance(VelibStation velibStation)
     {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+
+        args.putString(ARG_NAME, velibStation.getFields().getName());
+       /* args.putString(ARG_STATUS, velibStation.getFields().getStatus());
+        args.putInt(ARG_BIKESTANDS, velibStation.getFields().getBike_stands());
+        args.putInt(ARG_AVAILABLEBIKESTANDS, velibStation.getFields().getAvailable_bike_stands());
+        args.putString(ARG_ADRESS, velibStation.getFields().getAddress());
+        args.putString(ARG_UPDATEDATE, velibStation.getFields().getAddress()); */
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,18 +45,35 @@ public class PlaceholderFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        //bikeStands = getArguments().getInt("someInt", 0);
-        //status = getArguments().getString("someTitle");
-        //TODO: GET strings and ints to display in view
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         //super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.pageview_fragment, container, false);
-        TextView textView = (TextView) rootView.findViewById(R.id.firstlabel);
-        textView.setText("Test view pager " + getArguments().getInt(ARG_SECTION_NUMBER) );
+        TextView nameView = (TextView) rootView.findViewById(R.id.station_name);
+        nameView.setText("Name: " + getArguments().getString(ARG_NAME).split("-")[1].trim());
+     /*   if (getArguments().getString(ARG_STATUS).equals("CLOSED"))
+        {
+            ImageView imgView = (ImageView) rootView.findViewById(R.id.statusImg);
+            imgView.setImageResource(R.drawable.close);
+            TextView statusView = (TextView) rootView.findViewById(R.id.station_name);
+            statusView.setText("CLOSED");
+        }
+        TextView bikesView = (TextView) rootView.findViewById(R.id.station_bikestands);
+        bikesView.setText("Bike Stands: " + getArguments().getString(ARG_BIKESTANDS).toString());
+
+        TextView availableView = (TextView) rootView.findViewById(R.id.station_available);
+        availableView.setText("Available bike stands: " + getArguments().getString(ARG_AVAILABLEBIKESTANDS).toString());
+
+        TextView adressView = (TextView) rootView.findViewById(R.id.station_adress);
+        adressView.setText("Adress: " + getArguments().getString(ARG_ADRESS).toString());
+
+        TextView dateView = (TextView) rootView.findViewById(R.id.station_updatedate);
+        dateView.setText("Last Update: " + getArguments().getString(ARG_UPDATEDATE).toString()); */
+
         return rootView;
     }
 

@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:id="@+id/pageview_fragment">
+
     <TextView
-        android:id="@+id/firstlabel"
+        android:layout_width="wrap_content"
+        android:id="@+id/station_name"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#040404"/>
+
+    <ImageView
+        android:id="@+id/statusImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_gravity="right"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="15dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/open"
+        />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/station_status"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#040404"
+        android:text="OPEN"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/station_bikestands"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#040404"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/station_available"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#040404"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/station_adress"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#040404"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/station_updatedate"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#040404"/>
+</LinearLayout>

@@ -30,7 +30,7 @@ import static android.content.ContentValues.TAG;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
-    private List<VelibStation> mDataset = new ArrayList<>();
+    public static List<VelibStation> mDataset = new ArrayList<>();
     private List<VelibStation> sourceList = new ArrayList<>();
     private Context context;
 
@@ -49,7 +49,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             mTextView = (TextView) v.findViewById(R.id.list_text);
             statusIcon = (ImageView) v.findViewById(R.id.status_img);
         }
-
     }
 
 
@@ -99,7 +98,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 {
                     Log.d(TAG, "onClick: "+ e.getMessage().toString());
                 }
-
             }
         });
     }

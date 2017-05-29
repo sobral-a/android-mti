@@ -17,27 +17,18 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter
     @Override
     public Fragment getItem(int position)
     {
-        return PlaceholderFragment.newInstance(position + 1, null);
+        return PlaceholderFragment.newInstance(MyAdapter.mDataset.get(position));
     }
 
     @Override
     public CharSequence getPageTitle(int position)
     {
-        switch (position)
-        {
-            case  0:
-                return "SECTION 1";
-            case 1:
-                return "SECTION 2";
-            case 2:
-                return "SECTION 3";
-        }
-        return null;
+        return "SECTION";
     }
 
     @Override
     public int getCount()
     {
-        return 9;
+        return MyAdapter.mDataset.size();
     }
 }
