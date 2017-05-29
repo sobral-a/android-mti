@@ -3,6 +3,7 @@ package com.epita.mti.velibapp;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity
             {
                 fragment.getmAdapter().filter(query);
                 fragment.getmRecyclerView().scrollToPosition(0);
-                MenuItemCompat.collapseActionView(item);
                 return true;
             }
 
@@ -99,5 +99,4 @@ public class MainActivity extends AppCompatActivity
         Intent displayMembers = new Intent(MainActivity.this, MembersListActivity.class);
         startActivity(displayMembers);
     }
-
 }

@@ -1,7 +1,12 @@
 package com.epita.mti.velibapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +16,13 @@ import android.widget.TextView;
 import com.epita.mti.velibapp.data.StationFields;
 import com.epita.mti.velibapp.data.VelibStation;
 
+import java.net.ConnectException;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by alexa on 19/05/2017.
@@ -23,6 +32,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
     private List<VelibStation> mDataset = new ArrayList<>();
     private List<VelibStation> sourceList = new ArrayList<>();
+    private Context context;
+
+    public MyAdapter(Context context)
+    {
+        this.context = context;
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -34,6 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             mTextView = (TextView) v.findViewById(R.id.list_text);
             statusIcon = (ImageView) v.findViewById(R.id.status_img);
         }
+
     }
 
 
@@ -59,15 +75,35 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position)
+    public void onBindViewHolder(ViewHolder holder, final int position)
     {
-        StationFields fields = mDataset.get(position).getFields();
+        final VelibStation station = mDataset.get(position);
+        StationFields fields = station.getFields();
         holder.mTextView.setText(fields.getName().split("-")[1].trim());
         if (fields.getStatus().equals("CLOSED"))
         {
             holder.statusIcon.setImageResource(R.drawable.close);
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    Intent displayMembers = new Intent(context, PagerActivity.class);
+                    context.startActivity(displayMembers);
+                }
+                catch (Exception e)
+                {
+                    Log.d(TAG, "onClick: "+ e.getMessage().toString());
+                }
+
+            }
+        });
     }
+
 
     @Override
     public int getItemCount()
@@ -78,7 +114,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public void filter(String newText)
     {
         ArrayList<VelibStation> newList = new ArrayList<>();
-        if (newText != null && !newText.isEmpty())
+        if (newText != null && !newText.trim().isEmpty())
         {
             for (VelibStation v : mDataset)
             {
