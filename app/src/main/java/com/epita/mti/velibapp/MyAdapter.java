@@ -92,8 +92,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             {
                 try
                 {
-                    Intent displayMembers = new Intent(context, PagerActivity.class);
-                    context.startActivity(displayMembers);
+                    Intent pagerActivity = new Intent(context, PagerActivity.class);
+                    context.startActivity(pagerActivity);
                 }
                 catch (Exception e)
                 {
