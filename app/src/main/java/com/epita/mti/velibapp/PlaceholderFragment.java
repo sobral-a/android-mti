@@ -31,11 +31,11 @@ public class PlaceholderFragment extends Fragment
         Bundle args = new Bundle();
 
         args.putString(ARG_NAME, velibStation.getFields().getName());
-       /* args.putString(ARG_STATUS, velibStation.getFields().getStatus());
+        args.putString(ARG_STATUS, velibStation.getFields().getStatus());
         args.putInt(ARG_BIKESTANDS, velibStation.getFields().getBike_stands());
         args.putInt(ARG_AVAILABLEBIKESTANDS, velibStation.getFields().getAvailable_bike_stands());
         args.putString(ARG_ADRESS, velibStation.getFields().getAddress());
-        args.putString(ARG_UPDATEDATE, velibStation.getFields().getAddress()); */
+        args.putString(ARG_UPDATEDATE, velibStation.getFields().getLast_update());
 
         fragment.setArguments(args);
         return fragment;
@@ -54,25 +54,25 @@ public class PlaceholderFragment extends Fragment
         //super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.pageview_fragment, container, false);
         TextView nameView = (TextView) rootView.findViewById(R.id.station_name);
-        nameView.setText("Name: " + getArguments().getString(ARG_NAME).split("-")[1].trim());
-     /*   if (getArguments().getString(ARG_STATUS).equals("CLOSED"))
+        nameView.setText("Nom:  " + getArguments().getString(ARG_NAME).split("-")[1].trim());
+        if (getArguments().getString(ARG_STATUS).equals("CLOSED"))
         {
             ImageView imgView = (ImageView) rootView.findViewById(R.id.statusImg);
             imgView.setImageResource(R.drawable.close);
-            TextView statusView = (TextView) rootView.findViewById(R.id.station_name);
+            TextView statusView = (TextView) rootView.findViewById(R.id.station_status);
             statusView.setText("CLOSED");
         }
         TextView bikesView = (TextView) rootView.findViewById(R.id.station_bikestands);
-        bikesView.setText("Bike Stands: " + getArguments().getString(ARG_BIKESTANDS).toString());
+        bikesView.setText(String.format("Bike Stands:  %d", getArguments().getInt(ARG_BIKESTANDS)));
 
         TextView availableView = (TextView) rootView.findViewById(R.id.station_available);
-        availableView.setText("Available bike stands: " + getArguments().getString(ARG_AVAILABLEBIKESTANDS).toString());
+        availableView.setText("Available bike stands:  " + getArguments().getInt(ARG_AVAILABLEBIKESTANDS));
 
         TextView adressView = (TextView) rootView.findViewById(R.id.station_adress);
-        adressView.setText("Adress: " + getArguments().getString(ARG_ADRESS).toString());
+        adressView.setText("Adress:  " + getArguments().getString(ARG_ADRESS));
 
         TextView dateView = (TextView) rootView.findViewById(R.id.station_updatedate);
-        dateView.setText("Last Update: " + getArguments().getString(ARG_UPDATEDATE).toString()); */
+        dateView.setText("Last Update:  " + getArguments().getString(ARG_UPDATEDATE));
 
         return rootView;
     }

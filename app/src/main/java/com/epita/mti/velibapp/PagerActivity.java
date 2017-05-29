@@ -1,9 +1,7 @@
 package com.epita.mti.velibapp;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.BundleCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -24,5 +22,11 @@ public class PagerActivity extends AppCompatActivity
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+    }
+
+    private void displayMembers()
+    {
+        Intent displayMembers = new Intent(PagerActivity.this, MembersListActivity.class);
+        startActivity(displayMembers);
     }
 }
