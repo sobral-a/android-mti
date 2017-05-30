@@ -34,7 +34,6 @@ public class PagerActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        //currentPosition = getIntent().getIntExtra("currentPosition", 0);
         setContentView(R.layout.view_pager);
 
         Toolbar childToolbar = (Toolbar) findViewById(R.id.pagerToolBar);
@@ -55,6 +54,8 @@ public class PagerActivity extends AppCompatActivity
         mSectionsPagerAdapter = new SectionsPagerAdapter(fragmentManager);
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setCurrentItem(getIntent().getIntExtra("currentPosition", 0));
+
     }
 
     @Override

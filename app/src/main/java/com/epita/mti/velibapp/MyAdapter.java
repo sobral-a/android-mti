@@ -93,8 +93,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 try
                 {
                     Intent pagerActivity = new Intent(context, PagerActivity.class);
-                    //pagerActivity.putExtra("currentPosition", position);
-                    //TODO: pass the current index to the intent
+                    pagerActivity.putExtra("currentPosition", position);
                     context.startActivity(pagerActivity);
                 }
                 catch (Exception e)
