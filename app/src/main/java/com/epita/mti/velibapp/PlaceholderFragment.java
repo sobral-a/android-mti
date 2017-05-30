@@ -1,5 +1,8 @@
 package com.epita.mti.velibapp;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epita.mti.velibapp.data.VelibStation;
+
+import java.util.Locale;
 
 /**
  * Created by alexa on 27/05/2017.
@@ -74,8 +80,30 @@ public class PlaceholderFragment extends Fragment
         TextView availableView = (TextView) rootView.findViewById(R.id.station_available);
         availableView.setText("Available bike stands:  " + getArguments().getInt(ARG_AVAILABLEBIKESTANDS));
 
+        final String adresse = getArguments().getString(ARG_ADRESS);
         TextView adressView = (TextView) rootView.findViewById(R.id.station_adress);
-        adressView.setText("Adresse:  " + getArguments().getString(ARG_ADRESS));
+        adressView.setText("Adresse:  " +  adresse);
+
+        adressView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String uri = String.format("geo:%f,%f?q=%s", 48.8587741, 2.2074741, adresse);
+                Intent mapsIntent = new Intent(Intent.ACTION_VIEW);
+                mapsIntent.setData(Uri.parse(uri));
+                PackageManager packageManager = getContext().getPackageManager();
+                if (mapsIntent.resolveActivity(packageManager) != null)
+                {
+                    startActivity(mapsIntent);
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "Impossible to launch Google Maps for this adress",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         TextView dateView = (TextView) rootView.findViewById(R.id.station_updatedate);
         String[] tmp = getArguments().getString(ARG_UPDATEDATE).split("\\+");
@@ -83,7 +111,7 @@ public class PlaceholderFragment extends Fragment
         String[] splitDate = tmp[0].split("-");
         String date = splitDate[2] + "/" + splitDate[1] + "/" + splitDate[2];
         String time = tmp[1];
-        dateView.setText("Informations mises à jours:  " + date + " à " + time);
+        dateView.setText("Infos MàJ:  " + date + " à " + time);
 
         return rootView;
     }
