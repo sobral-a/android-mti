@@ -26,6 +26,8 @@ public class PagerActivity extends AppCompatActivity
         setContentView(R.layout.view_pager);
 
         Toolbar listToolBar = (Toolbar) findViewById(R.id.pagerToolBar);
+        listToolBar.setTitle("Station Details");
+        listToolBar.setLogo(R.drawable.details);
         setSupportActionBar(listToolBar);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -40,7 +42,6 @@ public class PagerActivity extends AppCompatActivity
     {
         MenuInflater menuInflater  = getMenuInflater();
         menuInflater.inflate(R.menu.pager_toolbar_menu, menu);
-
 
         return super.onCreateOptionsMenu(menu);
     }

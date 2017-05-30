@@ -51,7 +51,7 @@ public class PlaceholderFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        //super.onCreateView(inflater, container, savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.pageview_fragment, container, false);
         TextView nameView = (TextView) rootView.findViewById(R.id.station_name);
         nameView.setText("Nom:  " + getArguments().getString(ARG_NAME).split("-")[1].trim());

@@ -116,7 +116,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         {
             for (VelibStation v : mDataset)
             {
-                if (v.getFields().getName().trim().toLowerCase().contains(newText.toLowerCase().trim()))
+                if (v.getFields().getAddress().trim().toLowerCase().contains(newText.toLowerCase().trim()))
                     newList.add(v);
             }
         }
