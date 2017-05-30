@@ -23,6 +23,9 @@
         android:layout_below="@+id/members_list_toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="142dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#040404"
         android:text="Alexandre Sobral Martins"/>
 
     <TextView
@@ -33,6 +36,9 @@
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="29dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#040404"
         android:text="Khalis Chalabi alias Jobsinho"/>
 
 

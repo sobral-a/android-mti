@@ -78,7 +78,12 @@ public class PlaceholderFragment extends Fragment
         adressView.setText("Adress:  " + getArguments().getString(ARG_ADRESS));
 
         TextView dateView = (TextView) rootView.findViewById(R.id.station_updatedate);
-        dateView.setText("Last Update:  " + getArguments().getString(ARG_UPDATEDATE));
+        String[] tmp = getArguments().getString(ARG_UPDATEDATE).split("\\+");
+        tmp = tmp[0].split("T");
+        String[] splitDate = tmp[0].split("-");
+        String date = splitDate[2] + "/" + splitDate[1] + "/" + splitDate[2];
+        String time = tmp[1];
+        dateView.setText("Informations mises à jours:  " + date + " à " + time);
 
         return rootView;
     }

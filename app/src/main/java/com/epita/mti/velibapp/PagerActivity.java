@@ -85,7 +85,7 @@ public class PagerActivity extends AppCompatActivity
 
     private void displayMembers()
     {
-        Intent displayMembers = new Intent(PagerActivity.this, MembersListActivity.class);
+        Intent displayMembers = new Intent(PagerActivity.this, PagerMembersListActivity.class);
         startActivity(displayMembers);
     }
 
