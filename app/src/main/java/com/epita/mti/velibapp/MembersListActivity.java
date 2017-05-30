@@ -19,9 +19,10 @@ public class MembersListActivity extends AppCompatActivity
         setContentView(R.layout.list_members_activity);
 
         Toolbar childToolbar = (Toolbar) findViewById(R.id.members_list_toolbar);
-
         if (childToolbar != null)
         {
+            childToolbar.setTitle("Members List");
+            childToolbar.setLogo(R.drawable.people);
             setSupportActionBar(childToolbar);
         }
 

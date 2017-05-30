@@ -3,24 +3,15 @@ package com.epita.mti.velibapp;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import com.epita.mti.velibapp.data.VelibStation;
-
-import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity
 {

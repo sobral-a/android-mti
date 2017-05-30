@@ -54,7 +54,13 @@ public class PlaceholderFragment extends Fragment
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.pageview_fragment, container, false);
         TextView nameView = (TextView) rootView.findViewById(R.id.station_name);
-        nameView.setText("Nom:  " + getArguments().getString(ARG_NAME).split("-")[1].trim());
+
+        String[] array = getArguments().getString(ARG_NAME).split("-");
+        if (array.length > 2)
+            nameView.setText("Nom:  " + array[1].trim() + '-' + array[2].trim());
+        else
+            nameView.setText("Nom:  " + array[1].trim());
+
         if (getArguments().getString(ARG_STATUS).equals("CLOSED"))
         {
             ImageView imgView = (ImageView) rootView.findViewById(R.id.statusImg);

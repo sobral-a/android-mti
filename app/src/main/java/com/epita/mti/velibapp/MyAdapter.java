@@ -12,15 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.epita.mti.velibapp.data.StationFields;
 import com.epita.mti.velibapp.data.VelibStation;
-
-import java.net.ConnectException;
 import java.util.ArrayList;
-
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import static android.content.ContentValues.TAG;
 
@@ -78,7 +73,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     {
         final VelibStation station = mDataset.get(position);
         StationFields fields = station.getFields();
-        holder.mTextView.setText(fields.getName().split("-")[1].trim());
+        String[] array = fields.getName().split("-");
+
+        if (array.length > 2)
+            holder.mTextView.setText(array[1].trim() + '-' + array[2].trim());
+        else
+            holder.mTextView.setText(array[1].trim());
+
         if (fields.getStatus().equals("CLOSED"))
         {
             holder.statusIcon.setImageResource(R.drawable.close);
@@ -92,6 +93,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 try
                 {
                     Intent pagerActivity = new Intent(context, PagerActivity.class);
+                    //pagerActivity.putExtra("currentPosition", position);
+                    //TODO: pass the current index to the intent
                     context.startActivity(pagerActivity);
                 }
                 catch (Exception e)
