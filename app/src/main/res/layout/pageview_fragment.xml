@@ -10,8 +10,10 @@
         android:id="@+id/station_name"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:textColor="#040404"/>
 
     <ImageView
@@ -29,9 +31,10 @@
         android:id="@+id/station_status"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#040404"
+        android:layout_marginBottom="15dp"
         android:text="OPEN"/>
 
     <TextView
@@ -39,8 +42,10 @@
         android:id="@+id/station_bikestands"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:textColor="#040404"/>
 
     <TextView
@@ -48,8 +53,10 @@
         android:id="@+id/station_available"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:textColor="#040404"/>
 
     <TextView
@@ -57,8 +64,10 @@
         android:id="@+id/station_adress"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:textColor="#040404"/>
 
     <TextView
@@ -66,7 +75,9 @@
         android:id="@+id/station_updatedate"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:textColor="#040404"/>
 </LinearLayout>

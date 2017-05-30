@@ -75,7 +75,7 @@ public class PlaceholderFragment extends Fragment
         availableView.setText("Available bike stands:  " + getArguments().getInt(ARG_AVAILABLEBIKESTANDS));
 
         TextView adressView = (TextView) rootView.findViewById(R.id.station_adress);
-        adressView.setText("Adress:  " + getArguments().getString(ARG_ADRESS));
+        adressView.setText("Adresse:  " + getArguments().getString(ARG_ADRESS));
 
         TextView dateView = (TextView) rootView.findViewById(R.id.station_updatedate);
         String[] tmp = getArguments().getString(ARG_UPDATEDATE).split("\\+");

@@ -99,7 +99,7 @@ public class ListFragment extends Fragment
         }
         else
         {
-            Toast.makeText(getActivity(), "Impossible de récupérer les données",
+            Toast.makeText(getActivity(), "Impossible de récupérer les données, vérifiez votre connexion",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -109,28 +109,9 @@ public class ListFragment extends Fragment
         return mRecyclerView;
     }
 
-    public void setmRecyclerView(RecyclerView mRecyclerView)
-    {
-        this.mRecyclerView = mRecyclerView;
-    }
-
-    public RecyclerView.LayoutManager getmLayoutManager()
-    {
-        return mLayoutManager;
-    }
-
-    public void setmLayoutManager(RecyclerView.LayoutManager mLayoutManager)
-    {
-        this.mLayoutManager = mLayoutManager;
-    }
-
     public MyAdapter getmAdapter()
     {
         return mAdapter;
     }
 
-    public void setmAdapter(MyAdapter mAdapter)
-    {
-        this.mAdapter = mAdapter;
-    }
 }
