@@ -92,6 +92,8 @@ public class PlaceholderFragment extends Fragment
                 String uri = String.format("geo:%f,%f?q=%s", 48.8587741, 2.2074741, adresse);
                 Intent mapsIntent = new Intent(Intent.ACTION_VIEW);
                 mapsIntent.setData(Uri.parse(uri));
+                mapsIntent.setPackage("com.google.android.apps.maps");
+
                 PackageManager packageManager = getContext().getPackageManager();
                 if (mapsIntent.resolveActivity(packageManager) != null)
                 {

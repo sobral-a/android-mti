@@ -96,7 +96,14 @@ public class PagerActivity extends AppCompatActivity
 
         int currIndex = mViewPager.getCurrentItem();
         StationFields station = MyAdapter.mDataset.get(currIndex).getFields();
-        sendIntent.putExtra(Intent.EXTRA_TEXT, station.getAddress());
+        StringBuilder information = new StringBuilder("Station: ");
+        information.append(station.getName()).append("\n").append("Status: ")
+                .append(station.getStatus()).append("\n").append("Adresse: ")
+                .append(station.getAddress()).append("\n").append("Bike Stands: ")
+                .append(station.getBike_stands()).append("\n").append("Available Bike Stands: ")
+                .append(station.getAvailable_bike_stands());
+
+        sendIntent.putExtra(Intent.EXTRA_TEXT, information.toString());
         PackageManager packageManager = getPackageManager();
         List activities = packageManager.queryIntentActivities(sendIntent, PackageManager.MATCH_DEFAULT_ONLY);
         boolean isIntentSafe = activities.size() > 0;
