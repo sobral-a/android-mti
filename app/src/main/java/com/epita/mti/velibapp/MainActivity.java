@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
     {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         final MenuItem item = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) item.getActionView();
+        final SearchView searchView = (SearchView) item.getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity
             {
                 fragment.getmAdapter().filter(query);
                 fragment.getmRecyclerView().scrollToPosition(0);
+                searchView.clearFocus();
                 return true;
             }
 
