@@ -81,6 +81,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         {
             holder.statusIcon.setImageResource(R.drawable.close);
         }
+        else
+        {
+            holder.statusIcon.setImageResource(R.drawable.open);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
 

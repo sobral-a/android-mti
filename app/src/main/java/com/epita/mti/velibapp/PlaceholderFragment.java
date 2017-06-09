@@ -74,6 +74,14 @@ public class PlaceholderFragment extends Fragment
             TextView statusView = (TextView) rootView.findViewById(R.id.station_status);
             statusView.setText("CLOSED");
         }
+        else
+        {
+            ImageView imgView = (ImageView) rootView.findViewById(R.id.statusImg);
+            imgView.setImageResource(R.drawable.open);
+            TextView statusView = (TextView) rootView.findViewById(R.id.station_status);
+            statusView.setText("OPEN");
+        }
+
         TextView bikesView = (TextView) rootView.findViewById(R.id.station_bikestands);
         bikesView.setText(String.format("Bike Stands:  %d", getArguments().getInt(ARG_BIKESTANDS)));
 
