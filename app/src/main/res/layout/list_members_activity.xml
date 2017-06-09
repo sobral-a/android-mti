@@ -32,14 +32,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/textView2"
         android:layout_marginTop="29dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#040404"
-        android:text="Khalis Chalabi alias Jobsinho"/>
+        android:text="Khalis Chalabi"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
